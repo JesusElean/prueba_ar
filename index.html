@@ -46,21 +46,28 @@
     <!-- model-viewer con soporte para rotar, zoom y AR -->
     <model-viewer 
         src="./Exports/Mision.glb" 
-        ios-src="tu-modelo.usdz"
-        alt="Un modelo 3D de Blender" 
+        ios-src="./Exports/tu-modelo.usdz"
+        alt="Modelo 3D" 
         auto-rotate 
         camera-controls 
         ar 
-        ar-modes="scene-viewer quick-look webxr">
-        
-        <button slot="ar-button" id="ar-button">
-            Ver en tu espacio (AR) 🚀
-        </button>
+        ar-modes="scene-viewer quick-look webxr"
+        seamless-poster
+        shadow-intensity="1">
     </model-viewer>
 
     <p style="font-size: 14px; color: #aaa; text-align: center; max-width: 600px; padding: 0 20px;">
         Nota: Para que funcione en iPhone/iPad, lo ideal es agregar también la versión <code>ios-src</code> en formato <code>.usdz</code>. En Android abrirá directamente con Scene Viewer.
     </p>
+
+    <script>
+    const modelViewer = document.querySelector('model-viewer');
+    // Intenta activar AR automáticamente cuando el modelo esté listo
+    modelViewer.addEventListener('load', () => {
+        // Opcional: puedes forzar la activación si el entorno móvil lo permite
+        // modelViewer.activateAR(); 
+    });
+</script>
 
 </body>
 </html>
